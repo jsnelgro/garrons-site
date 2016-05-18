@@ -1,4 +1,5 @@
 var gulp        = require('gulp');
+var ghPages     = require('gulp-gh-pages');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 
@@ -19,6 +20,11 @@ gulp.task('sass', function() {
         .pipe(sass())
         .pipe(gulp.dest("app/css"))
         .pipe(browserSync.stream());
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./app/**/*')
+    .pipe(ghPages());
 });
 
 gulp.task('default', ['serve']);
