@@ -1,0 +1,39 @@
+$sans-serif: 'source sans pro', 'HelveticaNeue', sans-serif
+$title-font: courier, monospace
+$serif: georgia, 'libre baskerville', serif
+
+@import reset
+@import colors
+@import functions
+@import navbar
+@import section
+@import intro
+@import services
+@import story
+@import location
+@import sponsors
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  font-weight: 500
+  font-family: $sans-serif
+
+footer
+  padding: 1% 5%
+  text-align: center
+  background-color: $dark-gray
+  color: white
+  p
+    margin: 8px
+    display: inline-block
+    font-size: 0.85em
+  a
+    color: $dark-gold
+    font-weight: 500
+    text-decoration: none
+
+#app
+  min-height: 300%

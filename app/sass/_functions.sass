@@ -1,0 +1,180 @@
+// functions
+
+
+//
+// --- @media query factory, seriously boosts productivity when writing code for different screen sizes
+//
+$desktop-width: 1265px
+$break-large: 1000px
+$break-small: 700px
+
+=screen($media)
+  @if $media == mobile
+    @media only screen and (max-width: $break-small)
+      @content
+
+  @else if $media == tablet
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1)
+      @content
+
+  @else if $media == small-desktop
+    @media only screen and (min-width: $break-large) and (max-width: $desktop-width - 1)
+      @content
+
+  @else if $media == desktop
+    @media only screen and (min-width: $desktop-width)
+      @content
+
+
+//
+// --- extra grid helpers
+//
+=small-desktop-grid-wrapper
+  +screen(small-desktop)
+    width: 780px
+    margin: 0 auto
+
+=desktop-grid-wrapper
+  margin: 0 auto
+  width: 1040px
+
+=display-none-small-sizes
+  +screen(small-desktop)
+    display: none !important
+  +screen(tablet)
+    display: none !important
+  +screen(mobile)
+    display: none !important
+
+
+
+//
+// --- Flexbox mixins
+//
+=flexbox
+  display: -webkit-box
+  display: -webkit-flex
+  display: -moz-flex
+  display: -ms-flexbox
+  display: flex
+
+=align-items($value)
+  @if $value == flex-start
+    -webkit-box-align: start
+    -ms-flex-align: start
+  @else if $value == flex-end
+    -webkit-box-align: end
+    -ms-flex-align: end
+  @else
+    -webkit-box-align: $value
+    -ms-flex-align: $value
+  -webkit-align-items: $value
+  -moz-align-items: $value
+  align-items: $value
+
+=justify-content($value)
+  @if $value == flex-start
+    -webkit-box-pack: start
+    -ms-flex-pack: start
+  @else if $value == flex-end
+    -webkit-box-pack: end
+    -ms-flex-pack: end
+  @else if $value == space-between
+    -webkit-box-pack: justify
+    -ms-flex-pack: justify
+  @else if $value == space-around
+    -ms-flex-pack: distribute
+  @else
+    -webkit-box-pack: $value
+    -ms-flex-pack: $value
+  -webkit-justify-content: $value
+  -moz-justify-content: $value
+  justify-content: $value
+
+=flex-direction($value)
+  @if $value == row-reverse
+    -webkit-box-direction: reverse
+    -webkit-box-orient: horizontal
+  @else if $value == column
+    -webkit-box-direction: normal
+    -webkit-box-orient: vertical
+  @else if $value == column-reverse
+    -webkit-box-direction: reverse
+    -webkit-box-orient: vertical
+  @else
+    -webkit-box-direction: normal
+    -webkit-box-orient: horizontal
+    -webkit-flex-direction: $value
+  -moz-flex-direction: $value
+  -ms-flex-direction: $value
+  flex-direction: $value
+
+
+
+
+
+//
+// --- animation + transition helper functions
+//
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=animation($str)
+  -webkit-animation: #{$str}
+  -moz-animation: #{$str}
+  -ms-animation: #{$str}
+  -o-animation: #{$str}
+  animation: #{$str}
+
+=transition($args...)
+  -webkit-transition: $args
+  -moz-transition: $args
+  -ms-transition: $args
+  -o-transition: $args
+  transition: $args
+
+=translate3d($trans...)
+  -webkit-transform: translate3d($trans)
+  transform: translate3d($trans)
+  -ms-transform: translate3d($trans)
+
+=scale3d($trans...)
+  -webkit-transform: scale3d($trans)
+  transform: scale3d($trans)
+  -ms-transform: scale3d($trans)
+
+=rotate($trans...)
+  -webkit-transform: rotate($trans)
+  -moz-transform: rotate($trans)
+  -ms-transform: rotate($trans)
+  -o-transform: rotate($trans)
+  transform: rotate($trans)
+
+=linear-gradient($args...)
+  background: -webkit-linear-gradient($args) /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($args) /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($args) /* For Firefox 3.6 to 15 */
+  background: linear-gradient($args) /* Standard syntax */
+
+
+
+//
+// --- some other misc functions
+//
+=fast-transition
+  +transition(0.28s cubic-bezier(0.4,0,0.2,1) all)
+
+=prevent-select
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none

@@ -1,0 +1,37 @@
+#services
+  background: $light-gray
+  h1
+    &::after
+      border-color: $dark-gold
+  .service-items
+    display: flex
+    flex-direction: row-reverse
+    align-items: baseline
+    justify-content: center
+    +screen(mobile)
+      flex-wrap: wrap
+    .service-item
+      align-content: flex-end
+      margin: 1.5em
+      min-width: 33%
+      p
+        color: $dark-gray
+        margin-top: 1em
+        font-size: 20px
+        line-height: 30px
+      .service-item__icon
+        text-align: center
+        width: 100%
+        color: $blue
+        font-size: 5em
+      .service-item__icon.fa-key
+        color: $gold
+      .service-item__icon.fa-unlock-alt
+        color: $gray
+    p.item-title
+      text-align: center
+      font-size: 30px
+    p.item-description
+      font-family: $serif
+      font-size: 20px
+      text-align: center
