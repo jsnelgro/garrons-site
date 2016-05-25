@@ -148,6 +148,7 @@ section {
 .intro {
   height: 100vh; }
   .intro .backdrop {
+    display: block;
     position: absolute;
     z-index: 1;
     top: 0;
