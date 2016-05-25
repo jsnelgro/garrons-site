@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       closingTimeSpan.innerText = `opens ${untilOpen}`
     }
     else {
-      closingTimeSpan.innerText = 'closes ${untilClose}'
+      closingTimeSpan.innerText = `closes ${untilClose}`
     }
 
     if (closingTimeSpan.innerText.includes('opens')) {
