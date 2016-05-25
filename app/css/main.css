@@ -275,7 +275,7 @@ section {
     @media only screen and (max-width: 700px) {
       #story p {
         line-height: 32.4px;
-        padding: 32.4px 32.4px;
+        padding: 32.4px 8.1px;
         font-size: 20px; } }
 
 #location {
