@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+  moment.tz.add('America/Los_Angeles|PST PDT|80 70|0101|1Lzm0 1zb0 Op0');
   var closingTimeSpan = document.getElementById('js-timeUntilClosing')
   var callBtn = document.getElementById('js-call-btn')
   var schedule = [
@@ -10,18 +11,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     [-1, -1],
     [-1, -1]
   ]
-
-  setInterval(function() {
-    var currendDate = new Date()
-    var untilClose = schedule[currendDate.getDay()][1] - currendDate.getHours()
-    var untilOpen = schedule[currendDate.getDay()][0] - currendDate.getHours()
-    closingTimeSpan.innerText = untilClose <= 0 ? 'currently closed' : `closes in ${untilClose} hours`
+  var getTimes = function() {
+    var currentDate = moment(new Date()).tz('America/Los_Angeles')
+    var untilClose = currentDate.to(currentDate.set('hour', schedule[currentDate.day()][1]), true)
+    // var untilClose = schedule[currentDate.day()][1] - currentDate.hours()
+    var untilOpen = schedule[currentDate.day()][0] - currentDate.hours()
+    closingTimeSpan.innerText = untilClose <= 0 ? 'currently closed' : `closes in ${untilClose}`
     closingTimeSpan.innerText = untilOpen > 0 ? `opens in ${untilOpen} hours` : closingTimeSpan.innerText
     if (closingTimeSpan.innerText === 'currently closed') {
       callBtn.disabled = true
       callBtn.innerText = 'Locksmith is unavailable'
     }
-  }, 1000)
+  }
+  getTimes()
+  setInterval(getTimes, 1000)
 
   callBtn.addEventListener('click', function(e) {
     var telA = document.createElement('a')
