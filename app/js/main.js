@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if (closingTimeSpan.innerText.includes('opens')) {
       callBtn.disabled = true
-      callBtn.innerText = 'Locksmith is unavailable'
+      callBtn.innerText = 'The Locksmith is Sleeping'
     }
   }
 
