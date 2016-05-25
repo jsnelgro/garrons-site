@@ -1,27 +1,35 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+  moment.tz.add('America/Los_Angeles|PST PDT|80 70|0101|1Lzm0 1zb0 Op0');
   var closingTimeSpan = document.getElementById('js-timeUntilClosing')
   var callBtn = document.getElementById('js-call-btn')
   var schedule = [
-    [10, 17],
-    [10, 17],
-    [10, 17],
-    [10, 17],
-    [10, 17],
-    [-1, -1],
-    [-1, -1]
+    [0, 0],   // sun
+    [10, 17], // mon
+    [10, 17], // tues
+    [10, 17], // wed
+    [10, 17], // thurs
+    [10, 17], // fri
+    [0, 0]    // sat
   ]
+  var getTimes = function() {
+    var currentDate = moment(new Date()).tz('America/Los_Angeles')
+    var untilClose = currentDate.to(currentDate.clone().set('hour', schedule[currentDate.day()][1]))
+    if (untilClose.includes('ago')) {
+      var untilOpen = currentDate.to(currentDate.clone().set('hour', schedule[currentDate.day() + 1][0]).set('day', currentDate.day() + 1))
+      closingTimeSpan.innerText = `opens ${untilOpen}`
+    }
+    else {
+      closingTimeSpan.innerText = 'closes ${untilClose}'
+    }
 
-  setInterval(function() {
-    var currendDate = new Date()
-    var untilClose = schedule[currendDate.getDay()][1] - currendDate.getHours()
-    var untilOpen = schedule[currendDate.getDay()][0] - currendDate.getHours()
-    closingTimeSpan.innerText = untilClose <= 0 ? 'currently closed' : `closes in ${untilClose} hours`
-    closingTimeSpan.innerText = untilOpen > 0 ? `opens in ${untilOpen} hours` : closingTimeSpan.innerText
-    if (closingTimeSpan.innerText === 'currently closed') {
+    if (closingTimeSpan.innerText.includes('opens')) {
       callBtn.disabled = true
       callBtn.innerText = 'Locksmith is unavailable'
     }
-  }, 1000)
+  }
+
+  getTimes()
+  setInterval(getTimes, 1000)
 
   callBtn.addEventListener('click', function(e) {
     var telA = document.createElement('a')

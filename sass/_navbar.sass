@@ -1,6 +1,7 @@
 #navigation
   $nav-height: 55px
   position: absolute
+  z-index: 9
   width: 100%
   height: $nav-height
   background: rgba(50, 50, 50, 0.15)
@@ -25,6 +26,8 @@
         line-height: inherit
         text-transform: uppercase
         text-decoration: none
+        +screen(mobile)
+          padding: 0 15px
         &:hover
           color: $gold
   &.fixed
