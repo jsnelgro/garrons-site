@@ -56,8 +56,6 @@ strong {
   font-weight: bold; }
 
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .nav, .pagination, .carousel, .panel-title a {
@@ -73,11 +71,16 @@ strong {
   text-align: center; }
   #navigation ul {
     margin-top: 18.33333px;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    -ms-flex-flow: row;
+        flex-flow: row;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -ms-flex-align: center;
+        align-items: center;
     list-style: none; }
     #navigation ul li a {
       font-family: courier, monospace;
@@ -145,6 +148,7 @@ section {
 .intro {
   height: 100vh; }
   .intro .backdrop {
+    display: block;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -161,10 +165,14 @@ section {
     margin-bottom: 0.25em;
     color: #e6e6e6; }
   .intro .content {
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     position: absolute;
     text-align: center;
     z-index: 8;
@@ -177,7 +185,9 @@ section {
   .intro .call-btn {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-    user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
     margin: 55px 0;
     outline: none;
     cursor: pointer;
@@ -206,18 +216,25 @@ section {
     border-color: #E8AA21; }
   #services .service-items {
     margin-top: 15vh;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
-    align-items: baseline;
-    justify-content: center; }
+    -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    -ms-flex-align: baseline;
+        align-items: baseline;
+    -ms-flex-pack: center;
+        justify-content: center; }
     @media only screen and (max-width: 700px) {
       #services .service-items {
-        flex-wrap: wrap; } }
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; } }
     @media only screen and (min-width: 701px) and (max-width: 999px) {
       #services .service-items {
-        flex-wrap: wrap; } }
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; } }
     #services .service-items .service-item {
-      align-content: flex-end;
+      -ms-flex-line-pack: end;
+          align-content: flex-end;
       min-width: 33%; }
       #services .service-items .service-item p {
         color: #424E55;
@@ -259,7 +276,7 @@ section {
     @media only screen and (max-width: 700px) {
       #story p {
         line-height: 32.4px;
-        padding: 32.4px 32.4px;
+        padding: 32.4px 8.1px;
         font-size: 20px; } }
 
 #location {
@@ -312,14 +329,21 @@ section {
     font-size: 1.5em;
     margin-bottom: 10px; }
   #sponsors .sponsors-container-row {
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-flow: row wrap; }
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap; }
   #sponsors .sponsor-item {
-    align-content: flex-end;
+    -ms-flex-line-pack: end;
+        align-content: flex-end;
     margin: 25px 55px;
     color: #e6e6e6; }
     #sponsors .sponsor-item img {
@@ -358,9 +382,12 @@ footer {
 #home-anchor-btn {
   margin: 25px;
   position: fixed;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   z-index: 1;
   padding: 25px;
   font-family: monospace;
@@ -369,6 +396,13 @@ footer {
   border-radius: 100%;
   height: 25px;
   width: 25px; }
+  @media only screen and (max-width: 700px) {
+    #home-anchor-btn {
+      margin: 10px;
+      padding: 20px; }
+      #home-anchor-btn a {
+        padding-top: 8px;
+        padding-right: 14px; } }
   #home-anchor-btn a {
     margin-top: 8px;
     color: #e6e6e6; }
