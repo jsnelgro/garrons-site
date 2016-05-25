@@ -1,4 +1,6 @@
 #story
+  $story-font-size: 24
+  $phi: 1.62
   background: $light-gray
   h1
     color: $dark-gray
@@ -8,8 +10,11 @@
     color: $dark-gray
     font-family: $serif
     text-indent: 2em
-    line-height: 35px
-    padding: 0 100px
-    font-size: 22px
+    line-height: $story-font-size * $phi + 0px
+    padding: ($story-font-size*$phi + 0px) ($story-font-size * 2.62 + 0px)
+    font-size: $story-font-size + 0px
     +screen(mobile)
-      padding: 0 10px
+      $story-font-size: 20
+      line-height: $story-font-size * $phi + 0px
+      padding: ($story-font-size*$phi + 0px) ($story-font-size *$phi + 0px)
+      font-size: $story-font-size + 0px

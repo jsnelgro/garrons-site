@@ -4,15 +4,17 @@
     &::after
       border-color: $dark-gold
   .service-items
+    margin-top: 15vh
     display: flex
     flex-direction: row-reverse
     align-items: baseline
     justify-content: center
     +screen(mobile)
       flex-wrap: wrap
+    +screen(tablet)
+      flex-wrap: wrap
     .service-item
       align-content: flex-end
-      margin: 1.5em
       min-width: 33%
       p
         color: $dark-gray
@@ -30,8 +32,12 @@
         color: $gray
     p.item-title
       text-align: center
-      font-size: 30px
+      font-size: 25px
+      // font-family: $title-font
+      // text-transform: uppercase
     p.item-description
       font-family: $serif
-      font-size: 20px
+      font-size: 18px
       text-align: center
+      padding: 0 35px
+      padding-bottom: 55px

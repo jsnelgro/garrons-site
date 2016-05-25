@@ -205,6 +205,7 @@ section {
   #services h1::after {
     border-color: #E8AA21; }
   #services .service-items {
+    margin-top: 15vh;
     display: flex;
     flex-direction: row-reverse;
     align-items: baseline;
@@ -212,9 +213,11 @@ section {
     @media only screen and (max-width: 700px) {
       #services .service-items {
         flex-wrap: wrap; } }
+    @media only screen and (min-width: 701px) and (max-width: 999px) {
+      #services .service-items {
+        flex-wrap: wrap; } }
     #services .service-items .service-item {
       align-content: flex-end;
-      margin: 1.5em;
       min-width: 33%; }
       #services .service-items .service-item p {
         color: #424E55;
@@ -232,11 +235,13 @@ section {
         color: #9EA4A6; }
     #services .service-items p.item-title {
       text-align: center;
-      font-size: 30px; }
+      font-size: 25px; }
     #services .service-items p.item-description {
       font-family: georgia, "libre baskerville", serif;
-      font-size: 20px;
-      text-align: center; }
+      font-size: 18px;
+      text-align: center;
+      padding: 0 35px;
+      padding-bottom: 55px; }
 
 #story {
   background: #E9EAEA; }
@@ -248,12 +253,14 @@ section {
     color: #424E55;
     font-family: georgia, "libre baskerville", serif;
     text-indent: 2em;
-    line-height: 35px;
-    padding: 0 100px;
-    font-size: 22px; }
+    line-height: 38.88px;
+    padding: 38.88px 62.88px;
+    font-size: 24px; }
     @media only screen and (max-width: 700px) {
       #story p {
-        padding: 0 10px; } }
+        line-height: 32.4px;
+        padding: 32.4px 32.4px;
+        font-size: 20px; } }
 
 #location {
   background: #424E55;
