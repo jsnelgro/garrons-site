@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var callBtn = document.getElementById('js-call-btn')
   var schedule = [
     [0, 0],   // sun
-    [10, 17], // mon
-    [10, 17], // tues
-    [10, 17], // wed
-    [10, 17], // thurs
-    [10, 17], // fri
+    [9, 17], // mon
+    [9, 17], // tues
+    [9, 17], // wed
+    [9, 17], // thurs
+    [9, 17], // fri
     [0, 0]    // sat
   ]
   var getTimes = function() {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   callBtn.addEventListener('click', function(e) {
     var telA = document.createElement('a')
-    telA.href = `tel:${[6, 1, 7, 3, '-', 1, 0, 3, '-', 0, 6, 3, '-', 1].reverse().join('')}`
+    telA.href = `tel:${[1, 4, 3, 3, '-', 5, 8, 3, '-', 0, 6, 3, '-', 1].reverse().join('')}`
     telA.click()
   })
 })
