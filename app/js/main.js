@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   smoothScroll.init({speed: 650})
-  moment.tz.add('America/Los_Angeles|PST PDT|80 70|0101|1Lzm0 1zb0 Op0');
+  moment.tz.add('America/Los_Angeles|PST PDT|80 70|0101|1Lzm0 1zb0 Op0')
+  document.getElementById('currYearCopyright').innerText = moment(new Date()).tz('America/Los_Angeles').year()
   var closingTimeSpan = document.getElementById('js-timeUntilClosing')
   var callBtn = document.getElementById('js-call-btn')
   var schedule = [
