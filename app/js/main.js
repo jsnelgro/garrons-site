@@ -16,7 +16,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var currentDate = moment(new Date()).tz('America/Los_Angeles')
     var untilClose = currentDate.to(currentDate.clone().set('hour', schedule[currentDate.day()][1]))
     if (untilClose.includes('ago')) {
-      var untilOpen = currentDate.to(currentDate.clone().set('hour', schedule[currentDate.day() + 1][0]).set('day', currentDate.day() + 1))
+      var tomorrow = (currentDate.day() + 1) % schedule.length
+      var untilOpen = currentDate.to(
+        currentDate.clone()
+        .set('hour', schedule[tomorrow][0])
+        .set('day', currentDate.day() + 1)
+      )
       closingTimeSpan.innerText = `opens ${untilOpen}`
     }
     else {
