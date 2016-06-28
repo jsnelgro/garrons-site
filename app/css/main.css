@@ -400,9 +400,9 @@ footer {
     #home-anchor-btn {
       margin: 10px;
       padding: 20px; }
-      #home-anchor-btn a {
+      #home-anchor-btn div {
         padding-top: 8px;
         padding-right: 14px; } }
-  #home-anchor-btn a {
+  #home-anchor-btn div {
     margin-top: 8px;
     color: #e6e6e6; }
