@@ -3,6 +3,9 @@ var ghPages     = require('gulp-gh-pages');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var execSync = require('child_process').execSync;
+var fs = require('fs');
+var url = fs.readFileSync('CNAME').toString().replace('\n', '')
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
@@ -26,7 +29,14 @@ gulp.task('sass', function() {
 
 gulp.task('deploy', function() {
   return gulp.src('./app/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages())
+    .on('finish', () => {
+      console.log('publishing to ' + url + '...')
+      setTimeout(() => {
+        var publish = execSync(`surge ./.publish ${url}`)
+        console.log(publish.toString())
+      }, 800)
+    })
 });
 
 gulp.task('default', ['serve']);
