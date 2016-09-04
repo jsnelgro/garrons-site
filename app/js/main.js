@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var callBtn = document.getElementById('js-call-btn')
   var schedule = [
     [0, 0],   // sun
-    [9, 17], // mon
-    [9, 17], // tues
-    [9, 17], // wed
-    [9, 17], // thurs
-    [9, 17], // fri
+    [8, 16], // mon
+    [8, 16], // tues
+    [8, 16], // wed
+    [8, 16], // thurs
+    [8, 16], // fri
     [0, 0]    // sat
   ]
   var getTimes = function() {
